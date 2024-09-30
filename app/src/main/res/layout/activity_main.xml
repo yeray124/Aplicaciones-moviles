@@ -17,18 +17,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/boton_inicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="@string/boton_inicio"
         tools:layout_editor_absoluteX="154dp"
         tools:layout_editor_absoluteY="97dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/boton_cancelar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="@string/boton_cancelar"
         tools:layout_editor_absoluteX="154dp"
         tools:layout_editor_absoluteY="218dp" />
 
