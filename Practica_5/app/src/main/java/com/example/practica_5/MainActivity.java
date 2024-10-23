@@ -1,6 +1,7 @@
 package com.example.practica_5;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +9,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private Button Continuar;
+    private EditText CajaContrasena;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +23,21 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        CajaContrasena = findViewById(R.id.CajaContrasena);
+        Continuar = findViewById(R.id.Continuar);
+        Continuar.setOnClickListener(this);
     }
+
+    @Override
+    public void  setOnClick(View view) {
+        if(view.getId()== R.id.Continuar && )
+        {
+
+        } else {
+
+        }
+
+    }
+
+
 }

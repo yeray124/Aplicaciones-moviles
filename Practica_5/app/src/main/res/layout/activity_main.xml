@@ -28,11 +28,12 @@
         <EditText
             android:id="@+id/CajaTextoCorreo"
             android:layout_width="300dp"
-            android:textColor="@color/blanco"
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColor="@color/blanco" />
 
         <TextView
             android:layout_width="match_parent"
@@ -47,13 +48,20 @@
             android:textStyle="bold|italic" />
 
         <EditText
-            android:id="@+id/CajaContraseña"
+            android:id="@+id/CajaContrasena"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
             android:textColor="@color/blanco"
             android:ems="10"
             android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/textContra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Has iniciado sesion"
+            android:visibility="invisible" />
 
         <Switch
             android:id="@+id/switch1"
@@ -62,10 +70,11 @@
             android:layout_marginLeft="70dp"
             android:fontFamily="serif"
             android:text="Recordar contraseña"
-            android:textColor="@color/blanco" />
+            android:textColor="@color/blanco"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/Continuar"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="120dp"
