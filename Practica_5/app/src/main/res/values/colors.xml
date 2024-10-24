@@ -3,5 +3,6 @@
     <color name="negro">#FF000000</color>
     <color name="blanco">#FFFFFFFF</color>
     <color name="gris">#808080</color>
-    <color name="fondo">#80FF000000</color>
+    <color name="verde">#008000</color>
+    <color name="rojo">#FF0000</color>
 </resources>

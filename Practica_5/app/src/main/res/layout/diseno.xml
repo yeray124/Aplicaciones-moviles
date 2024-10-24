@@ -56,22 +56,28 @@
             android:ems="10"
             android:inputType="textPassword" />
 
-        <TextView
-            android:id="@+id/textContra"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Has iniciado sesion"
-            android:visibility="invisible" />
-
         <Switch
-            android:id="@+id/switch1"
+            android:id="@+id/Recordar"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
-            android:fontFamily="serif"
+            android:fontFamily="sans-serif-medium"
             android:text="Recordar contraseña"
             android:textColor="@color/blanco"
+            android:textSize="16sp"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <TextView
+            android:id="@+id/MostrarInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:text="Usuario correcto"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/Continuar"
@@ -81,7 +87,7 @@
             android:layout_marginTop="50dp"
             android:backgroundTint="@color/blanco"
             android:fontFamily="serif"
-            android:text="Continuar"
+            android:text="@string/boton"
             android:textColor="@color/negro" />
 
     </LinearLayout>
