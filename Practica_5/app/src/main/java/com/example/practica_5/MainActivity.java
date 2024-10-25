@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         MostrarInfo = findViewById(R.id.MostrarInfo);
         Recordar = findViewById(R.id.Recordar);
 
+        Continuar = findViewById(R.id.Continuar);
+
         MostrarInfo.setVisibility(View.INVISIBLE);
         Continuar.setOnClickListener(this);
     }
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 MostrarInfo.setTextColor(getColor(R.color.verde));
                 MostrarInfo.setText("Inicio de sesion correcto :)");
                 if (Recordar.isChecked()) {
-                    MostrarInfo.setText(MostrarInfo.getText() + "\n" + "Almacenado para siguientes accesos");
+                    MostrarInfo.setText(MostrarInfo.getText() + " / Almacenado para siguientes accesos");
                 }
             } else {
                 MostrarInfo.setVisibility(View.VISIBLE);
