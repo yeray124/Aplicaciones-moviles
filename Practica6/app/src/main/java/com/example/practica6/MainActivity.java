@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String contrasenaCorrecta2 = "1234";
 
         if (view.getId() == R.id.Continuar) {
-            // Verifica ambas combinaciones de usuario y contraseña
             if ((usuario.equals(usuarioCorrecto) && contrasena.equals(contrasenaCorrecta)) ||
                     (usuario.equals(usuarioCorrecto2) && contrasena.equals(contrasenaCorrecta2))) {
                 MostrarInfo.setVisibility(View.VISIBLE);

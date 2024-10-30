@@ -25,7 +25,7 @@ public class MainActivityYeray extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String email = extras.getString("email");
-            TextView correoTextView = findViewById(R.id.correoTextView); // Asegúrate de que el ID es correcto
+            TextView correoTextView = findViewById(R.id.correoTextView);
             correoTextView.setText(email);
         }
     }
