@@ -1,15 +1,9 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#eed09d"
     android:orientation="vertical">
-
-    <View
-        android:id="@+id/dividerTop"
-        android:layout_width="match_parent"
-        android:layout_height="15dp"
-        android:background="@color/black" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,6 +29,7 @@
     <View
         android:id="@+id/dividerBottom"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="#000000" />
+        android:layout_height="10dp"
+        android:background="#4b3621" />
+
 </LinearLayout>
