@@ -5,7 +5,7 @@ public class Videojuegos {
     private String Imagen;
     private String Genero;
 
-    public Videojuegos(String Titulo, String Imagen, String Genero){
+    public Videojuegos(String Titulo, String Genero, String Imagen){
         this.Titulo = Titulo;
         this.Imagen = Imagen;
         this.Genero = Genero;
@@ -14,11 +14,13 @@ public class Videojuegos {
         return Titulo;
     }
 
+    public String getGenero() {
+        return Genero;
+    }
+
     public String getImagen() {
         return Imagen;
     }
 
-    public String getGenero() {
-        return Genero;
-    }
+
 }

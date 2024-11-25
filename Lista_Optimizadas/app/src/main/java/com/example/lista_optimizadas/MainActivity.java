@@ -13,15 +13,20 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private AdaptadorVideojuegos adaptador;
-    private Videojuegos[] listaVideojuegos;
+    private ArrayList<Videojuegos> listaVideojuegos;
 
     private EditText NombreID;
     private EditText TextUrl;
     private Button buttonInsertar;
+    private EditText textGenero;
+
+    private DB_juegos dbVideojuegos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,28 +43,35 @@ public class MainActivity extends AppCompatActivity {
         NombreID = findViewById(R.id.NombreID);
         TextUrl = findViewById(R.id.TextUrl);
         buttonInsertar = findViewById(R.id.buttonInsertar);
+        textGenero = findViewById(R.id.textGenero);
 
-        Videojuegos[] videojuegos = new Videojuegos[2];
-        videojuegos[0] = new Videojuegos("Elden ring", "elden", "2022-02-25");
-        videojuegos[1] = new Videojuegos("Mario Bros", "mario", "1985-09-13");
+      //  Videojuegos[] videojuegos = new Videojuegos[2];
+        //videojuegos[0] = new Videojuegos("Elden ring", "elden", "2022-02-25");
+       // videojuegos[1] = new Videojuegos("Mario Bros", "mario", "1985-09-13");
 
+        dbVideojuegos = new DB_juegos(this);
 
-        AdaptadorVideojuegos adaptador = new AdaptadorVideojuegos(videojuegos, this);
+        listaVideojuegos = dbVideojuegos.obetenerTodosLosVideojuegos();
 
         adaptador = new AdaptadorVideojuegos(listaVideojuegos, this);
+
+        // adaptador = new AdaptadorVideojuegos(listaVideojuegos, this);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adaptador);
+
+
 
         buttonInsertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String nombre = NombreID.getText().toString();
                 String url = TextUrl.getText().toString();
+                String genero = textGenero.getText().toString();
 
-                if (!nombre.isEmpty() && !url.isEmpty()) {
-                    insertarNuevoVideojuego(nombre, url);
+                if (!nombre.isEmpty() && !url.isEmpty() && !genero.isEmpty()) {
+                    insertarNuevoVideojuego(nombre, url, genero);
                 } else {
 
                     System.out.println("Error: campos vacíos :))))");
@@ -68,13 +80,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void insertarNuevoVideojuego(String nombre, String url) {
-        Videojuegos nuevoVideojuego = new Videojuegos(nombre, url, "2023-11-25");
+    private void insertarNuevoVideojuego(String nombre, String url, String genero) {
 
-        Videojuegos[] nuevaLista = new Videojuegos[listaVideojuegos.length + 1];
-        System.arraycopy(listaVideojuegos, 0, nuevaLista, 0, listaVideojuegos.length);
-        nuevaLista[listaVideojuegos.length] = nuevoVideojuego;
-        listaVideojuegos = nuevaLista;
+        dbVideojuegos.insertarVideojuego(nombre, url, genero);
+
+
+        listaVideojuegos = dbVideojuegos.obetenerTodosLosVideojuegos();
 
         adaptador = new AdaptadorVideojuegos(listaVideojuegos, this);
         recyclerView.setAdapter(adaptador);

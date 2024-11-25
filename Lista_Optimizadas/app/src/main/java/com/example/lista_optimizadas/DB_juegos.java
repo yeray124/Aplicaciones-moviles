@@ -15,12 +15,12 @@ public class DB_juegos extends SQLiteOpenHelper {
 
     private Context contexto;
 
-    public DB_juegos(Context contexto){
+    public DB_juegos(Context contexto) {
         super(contexto, DATABASE_NAME, null, DATABASE_VERSION);
         this.contexto = contexto;
     }
 
-    private String SQLCREATE = "CREATE TABLE Videojuegos (Nombre TEXT, Genero TEXT)";
+    private String SQLCREATE = "CREATE TABLE Videojuegos (Titulo TEXT, Genero TEXT, Imagen TEXT)";
 
     private SQLiteDatabase bd = null;
 
@@ -32,54 +32,57 @@ public class DB_juegos extends SQLiteOpenHelper {
     private String SQLDROP = "DROP TABLE IF EXISTS Videojuegos";
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int preVersion, int NewVersion){
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int preVersion, int NewVersion) {
         sqLiteDatabase.execSQL(SQLDROP);
         sqLiteDatabase.execSQL(SQLCREATE);
     }
 
     public void cerrarDB() {
-        if (bd !=  null)
-        {
+        if (bd != null) {
             bd.close();
         }
     }
 
-    public void insertarVideojuego(){
-        bd =  getWritableDatabase();
+    public void insertarVideojuego(String titulo, String genero, String imagen) {
+        bd = getWritableDatabase();
 
         if (bd != null) {
             ContentValues datos = new ContentValues();
-            datos.put("Nombre", "BLACK OPS 3");
-            datos.put("Genero", "Accion");
+            datos.put("Titulo", titulo);
+            datos.put("Genero", genero);
+            datos.put("Imagen",imagen);
             bd.insert("Juegos", "", datos);
             close();
         }
     }
-    private String SQLDELETE="DELETE FROM Videojuegos WHERE Genero='Accion'";
-    public void BorrarVideojuego(){
+
+    private String SQLDELETE = "DELETE FROM Videojuegos WHERE Genero='Accion'";
+
+    public void BorrarVideojuego() {
         bd = getWritableDatabase();
 
-        if(bd != null){
+        if (bd != null) {
             bd.execSQL(SQLDELETE);
             close();
         }
     }
+
     public void actualizarVideojuego() {
         bd = getWritableDatabase();
 
-        if (bd != null){
+        if (bd != null) {
             ContentValues datos = new ContentValues();
-            datos.put("Nombre", "BLACK OPS 3");
+            datos.put("Titulo", "BLACK OPS 3");
             datos.put("Genero", "Accion");
 
-            String where = "Nombre = ?";
+            String where = "Titulo = ?";
             String[] argumentosNuevos = {"BLACK OPS 3"};
             bd.update("Videojuegos", datos, where, argumentosNuevos);
             close();
         }
     }
 
-    public ArrayList<Videojuegos> obetenerTodosLosVideojuegos(){
+    public ArrayList<Videojuegos> obetenerTodosLosVideojuegos() {
         bd = getReadableDatabase();
 
         ArrayList<Videojuegos> videojuego = new ArrayList<>();
@@ -95,5 +98,15 @@ public class DB_juegos extends SQLiteOpenHelper {
                 null
 
         );
+
+        c.moveToFirst();
+        if (c.getCount() > 0) {
+            do {
+                videojuego.add(new Videojuegos(c.getString(0), c.getString(1), c.getString(2)));
+            }
+            while (c.moveToNext());
+        }
+        close();
+        return videojuego;
     }
 }

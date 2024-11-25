@@ -9,12 +9,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class AdaptadorVideojuegos extends RecyclerView.Adapter<AdaptadorVideojuegos.VideojuegosViewHolder> {
 
-    private Videojuegos[] listaVideojuegos;
+    private ArrayList<Videojuegos> listaVideojuegos;
     private Context context; // aqui inserto mi imagen :)
 
-    public AdaptadorVideojuegos(Videojuegos[] listaVideojuegos, Context context) {
+    public AdaptadorVideojuegos(ArrayList<Videojuegos> listaVideojuegos, Context context) {
         this.listaVideojuegos = listaVideojuegos;
         this.context = context;
     }
@@ -23,18 +25,20 @@ public class AdaptadorVideojuegos extends RecyclerView.Adapter<AdaptadorVideojue
     public static class VideojuegosViewHolder extends RecyclerView.ViewHolder {
         public TextView tituloView;
         public ImageView portadaView;
+        public TextView textViewGenero;
 
 
         public VideojuegosViewHolder(View view) {
             super(view);
 
-
+            textViewGenero =  view.findViewById(R.id.textViewGenero);
             tituloView = view.findViewById(R.id.textoView);
             portadaView = view.findViewById(R.id.imageView);
         }
 
         public void BindVideojuegos(Videojuegos videojuego, Context context) {
             tituloView.setText(videojuego.getTitulo());
+            textViewGenero.setText(videojuego.getGenero());
             portadaView.setImageResource(context.getResources().getIdentifier(
                     videojuego.getImagen(), "drawable", context.getPackageName()));
         }
@@ -50,11 +54,11 @@ public class AdaptadorVideojuegos extends RecyclerView.Adapter<AdaptadorVideojue
 
     @Override
     public void onBindViewHolder(@NonNull VideojuegosViewHolder holder, int position) {
-        holder.BindVideojuegos(this.listaVideojuegos[position], context);
+        holder.BindVideojuegos(this.listaVideojuegos.get(position), context);
     }
 
     @Override
     public int getItemCount() {
-        return this.listaVideojuegos.length;
+        return this.listaVideojuegos.size();
     }
     }

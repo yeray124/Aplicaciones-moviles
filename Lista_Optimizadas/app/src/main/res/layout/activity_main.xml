@@ -8,16 +8,26 @@
       android:layout_height="wrap_content"
       android:orientation="vertical"
       android:padding="16dp">
-  <EditText
-      android:id="@+id/NombreID"
-      android:layout_width="200dp"
-      android:layout_height="wrap_content"
-      android:layout_gravity="center"
-      android:layout_marginTop="40dp"
-      android:gravity="center"
-      android:hint="Nombre" />
 
-  <EditText
+    <EditText
+        android:id="@+id/NombreID"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:hint="Nombre" />
+
+    <EditText
+        android:id="@+id/textGenero"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:hint="Genero" />
+
+    <EditText
       android:id="@+id/TextUrl"
       android:layout_width="200dp"
       android:layout_height="wrap_content"
@@ -26,20 +36,20 @@
       android:gravity="center"
       android:hint="Url imagen" />
 
-  <Button
-      android:id="@+id/buttonInsertar"
-      android:layout_width="100dp"
-      android:layout_height="wrap_content"
-      android:layout_gravity="center"
-      android:layout_marginTop="40dp"
-      android:backgroundTint="#4b3621"
-      android:text="Insertar" />
+    <Button
+        android:id="@+id/buttonInsertar"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:backgroundTint="#4b3621"
+        android:text="Insertar" />
 
-  <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/recView"
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      android:layout_marginTop="20dp"
-      android:layout_weight="1" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="60dp"
+        android:layout_weight="1" />
 </LinearLayout>
     </ScrollView>
