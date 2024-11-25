@@ -29,7 +29,7 @@
     <View
         android:id="@+id/dividerBottom"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="5dp"
         android:background="#4b3621" />
 
 </LinearLayout>
