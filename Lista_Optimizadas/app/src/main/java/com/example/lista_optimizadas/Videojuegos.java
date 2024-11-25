@@ -3,12 +3,12 @@ package com.example.lista_optimizadas;
 public class Videojuegos {
     private String Titulo;
     private String Imagen;
-    private String Fecha_De_Salida;
+    private String Genero;
 
-    public Videojuegos(String Titulo, String Imagen, String Fecha_De_Salida){
+    public Videojuegos(String Titulo, String Imagen, String Genero){
         this.Titulo = Titulo;
         this.Imagen = Imagen;
-        this.Fecha_De_Salida = Fecha_De_Salida;
+        this.Genero = Genero;
     }
     public String getTitulo() {
         return Titulo;
@@ -18,7 +18,7 @@ public class Videojuegos {
         return Imagen;
     }
 
-    public String Fecha_De_Salida() {
-        return Fecha_De_Salida;
+    public String getGenero() {
+        return Genero;
     }
 }
