@@ -1,4 +1,3 @@
 <resources>
-    <string name="boton_inicio">Inicio</string>
-    <string name="boton_cancelar">Cancelar</string>
+    <string name="app_name">Practica_7</string>
 </resources>
