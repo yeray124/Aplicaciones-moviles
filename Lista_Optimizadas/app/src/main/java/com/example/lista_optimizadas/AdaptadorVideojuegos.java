@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class AdaptadorVideojuegos extends RecyclerView.Adapter<AdaptadorVideojuegos.VideojuegosViewHolder> {
@@ -39,8 +41,9 @@ public class AdaptadorVideojuegos extends RecyclerView.Adapter<AdaptadorVideojue
         public void BindVideojuegos(Videojuegos videojuego, Context context) {
             tituloView.setText(videojuego.getTitulo());
             textViewGenero.setText(videojuego.getGenero());
-            portadaView.setImageResource(context.getResources().getIdentifier(
-                    videojuego.getImagen(), "drawable", context.getPackageName()));
+            Picasso.get().load(videojuego.getImagen()).into(portadaView);
+           // portadaView.setImageResource(context.getResources().getIdentifier(
+            //        videojuego.getImagen(), "drawable", context.getPackageName()));
         }
     }
 

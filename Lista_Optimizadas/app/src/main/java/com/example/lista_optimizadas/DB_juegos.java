@@ -51,7 +51,7 @@ public class DB_juegos extends SQLiteOpenHelper {
             datos.put("Titulo", titulo);
             datos.put("Genero", genero);
             datos.put("Imagen",imagen);
-            bd.insert("Juegos", "", datos);
+            bd.insert("Videojuegos", "", datos);
             close();
         }
     }
@@ -102,7 +102,7 @@ public class DB_juegos extends SQLiteOpenHelper {
         c.moveToFirst();
         if (c.getCount() > 0) {
             do {
-                videojuego.add(new Videojuegos(c.getString(0), c.getString(1), c.getString(2)));
+                videojuego.add(new Videojuegos(c.getString(0),  c.getString(2), c.getString(1)));
             }
             while (c.moveToNext());
         }
