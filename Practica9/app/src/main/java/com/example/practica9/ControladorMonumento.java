@@ -30,6 +30,7 @@ public class ControladorMonumento {
 
     private final String URLOBTENERMONUMENTOS = URLSERVIDOR + "obtenerTodosMonumentos.php";
     private final String URLOBTENERMONUMENTO = URLSERVIDOR + "obtenerMonumentoID.php";
+    public String video;
 
     private Context contexto;
     private RecyclerView lista;
