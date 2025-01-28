@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -11,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +20,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.squareup.picasso.Picasso;
+
+import org.osmdroid.config.Configuration;
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapController;
+import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
 
 import java.util.ArrayList;
 
@@ -35,10 +41,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView ubi;
     private TextView longitud;
     private TextView latitud;
-    private TextView error;
     private Button comprar;
     private ControladorMonumento controlador;
     private LinearLayout caja;
+    private MapView mapa;
 
 
     @SuppressLint("MissingInflatedId")
@@ -54,8 +60,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         video = findViewById(R.id.video);
-        buscar = findViewById(R.id.buscar);
-        id = findViewById(R.id.id);
         nombreMonumento = findViewById(R.id.nombre);
         descripcion = findViewById(R.id.descripcionDc);
         fecha = findViewById(R.id.Fecha);
@@ -63,25 +67,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ubi = findViewById(R.id.Ubicacion);
         longitud = findViewById(R.id.Longitud);
         latitud = findViewById(R.id.Latitud);
-        error = findViewById(R.id.error);
         comprar = findViewById(R.id.comprar);
         caja = findViewById(R.id.caja);
+        mapa = findViewById(R.id.mapa);
 
-        buscar.setOnClickListener(this);
 
-        controlador = new ControladorMonumento(this);
+        MapController mapController = (MapController) mapa.getController();
+
+
+        GeoPoint startPoint = new GeoPoint(37.1773, -3.5986);
+        mapa.getController().setCenter(startPoint);
+        mapa.getController().setZoom(15.0);
+
+
+        Configuration.getInstance().setUserAgentValue("appIdMapPractice");
+        ControladorMonumento controlador = new ControladorMonumento(getApplicationContext());
     }
     @Override
     public void onClick(View view) {
 
         String monumentId = id.getText().toString();
 
-        if (monumentId.isEmpty()) {
-            error.setText("Por favor, introduce un ID válido");
-            error.setVisibility(View.VISIBLE);
-        } else {
             try {
-                error.setVisibility(View.GONE);
                 controlador.obtenerMonumentoID(monumentId, new VolleyCallBack() {
                     @Override
                     public void onSuccess(Context context, ArrayList<Monumento> monumentos) {
@@ -108,5 +115,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 throw new RuntimeException(e);
             }
         }
-    }
+
 }
